@@ -5,10 +5,10 @@
 <c:set var="titleErrors" value="${errors.get('title')}"/>
 <c:set var="slugErrors" value="${errors.get('slug')}"/>
 <div class="container blog-tag-create">
-	<h1 class="original">Create new tag</h1>
+	<h1 class="original">Создание нового тега</h1>
 	<form action="" method="post">
 		<div class="form-group">
-			<label for="slugTitle">Title</label>
+			<label for="slugTitle">Загловок</label>
 			<input type="text" class="form-control" name="title" value="${title}" id="slugTitle">
 			<c:if test="${titleErrors.size() > 0 }">
 				<div class="alert alert-danger">
@@ -19,7 +19,7 @@
 			</c:if>
 		</div>
 		<div class="form-group">
-			<label for="slugSlug">Slug</label>
+			<label for="slugSlug">URL</label>
 			<input type="text" class="form-control" name="slug" value="${slug}" id="slugSlug">
 			<c:if test="${slugErrors.size() > 0 }">
 				<div class="alert alert-danger">
@@ -29,6 +29,6 @@
                 </div>
 			</c:if>
 		</div>
-		<button type="submit" class="btn btn-primary">Tag Create</button>
+		<button type="submit" class="btn btn-primary">Создать тег</button>
 	</form>
 </div>

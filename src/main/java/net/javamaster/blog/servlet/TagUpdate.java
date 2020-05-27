@@ -74,12 +74,11 @@ public class TagUpdate extends HttpServlet {
 			updateTag(slug, title, newSlug);
 			response.sendRedirect("/tags");
 		} else {
-			Map<String, ArrayList<String>> errors = Tag.getErrors(title, slug, tagExist);
+			Map<String, ArrayList<String>> errors = Tag.getErrors(title, newSlug, tagExist);
 
 			request.setAttribute("errors", errors);
 			request.setAttribute("title", title);
 			request.setAttribute("slug", newSlug);
-			request.getRequestDispatcher("/jsp/tag_update.jsp").forward(request, response);
 			request.setAttribute("currentPage", "page/tag_update.jsp");
 			request.getRequestDispatcher("/WEB-INF/JSP/template.jsp").forward(request, response);
 		}

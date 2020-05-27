@@ -6,10 +6,10 @@
 <c:set var="slugErrors" value="${errors.get('slug')}"/>
 <c:set var="bodyErrors" value="${errors.get('body')}"/>
 <div class="container blog-post-update">
-	<h1 class="original">Update post</h1>
+	<h1 class="original">Обновление поста</h1>
 	<form action="" method="post">
 		<div class="form-group">
-			<label for="postTitle">Title</label>
+			<label for="postTitle">Заголовок</label>
 			<input type="text" name="title" class="form-control" id="postTitle" value="${title}">
 			<c:if test="${titleErrors.size() > 0 }">
 				<div class="alert alert-danger">
@@ -20,7 +20,7 @@
 			</c:if>
 		</div>
 		<div class="form-group">
-			<label for="postSlug">Slug</label>
+			<label for="postSlug">URL</label>
 			<input type="text" name="slug" class="form-control" id="postSlug" value="${slug}">
 			<c:if test="${slugErrors.size() > 0 }">
 				<div class="alert alert-danger">
@@ -31,7 +31,7 @@
 			</c:if>
 		</div>
 		<div class="form-group">
-			<label for="postBody">Body</label>
+			<label for="postBody">Тело поста</label>
 			<textarea class="form-control" name="body" id="postBody" rows="3">${body}</textarea>
 			<script type="text/javascript">CKEDITOR.replace('postBody')</script>
 			<c:if test="${bodyErrors.size() > 0 }">
@@ -43,7 +43,7 @@
 			</c:if>
 		</div>
 		<div class="form-group">
-			<label for="postTags">Tags</label>
+			<label for="postTags">Теги</label>
 			<select multiple class="form-control" id="postTags" name="tags">
 				<c:forEach var="tag" items="${mapAllTags}">
 					<c:if test="${mapLaterSelectTags.containsKey(tag.getKey())}">
@@ -55,6 +55,6 @@
 			 	</c:forEach>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary">Post Update</button>
+		<button type="submit" class="btn btn-primary">Обновить пост</button>
 	</form>
 </div>

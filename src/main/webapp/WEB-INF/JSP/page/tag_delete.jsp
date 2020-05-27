@@ -5,11 +5,11 @@
 <div class="container blog-tag-delete">
 	<form action="#" method="POST">
 
-		<h3>Are you sure you wnt to delete Tag - <b>${title}</b></h3>
+		<h3>Этот тег будет удален - <b>${title}</b></h3>
 		<div class="buttons-delete">
-			<a href="/tags" class="btn btn-primary">Cancel</a>
+			<a href="/tags" class="btn btn-primary">Вернуться назад</a>
 			<form action="" method="post">
-				<input type="submit" name='button' class="btn btn-danger" value="Delete">
+				<input type="submit" name='button' class="btn btn-danger" value="Удалить тег">
 			</form>
 		</div>
 	</form>

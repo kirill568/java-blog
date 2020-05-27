@@ -5,7 +5,7 @@
 <div class="container blog-tag-detail">
 	<div class="row">
 		<div class="col-6 offset-md-3">
-			<h1 class="mb-5 mt-4">Посты для ${tag.getTitle()} тега:</h1>
+			<h1 class="mb-5 mt-4">Посты для тега ${tag.getTitle()}:</h1>
 			<c:forEach var="post" items="${posts}" varStatus="counter">
 	            <div class="card mb-4">
 				    <h5 class="card-header">${post.getDatePub().substring(0, 10)}</h5>
@@ -20,7 +20,7 @@
 				        		${post.getBody()}
 				        	</c:if>
 				    	</p>
-				        <a href="/post/detail?post=${post.getSlug()}" class="btn btn-primary">Read</a>
+				        <a href="/post/detail?post=${post.getSlug()}" class="btn btn-primary">Читать</a>
 				    </div>
 				</div>
 			</c:forEach>

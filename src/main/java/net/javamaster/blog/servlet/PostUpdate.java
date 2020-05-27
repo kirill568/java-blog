@@ -94,11 +94,10 @@ public class PostUpdate extends HttpServlet {
 			updatePost(slug, title, newSlug, body, selectTags);
 			response.sendRedirect("/posts");
 		} else {
-			Map<String, ArrayList<String>> errors = Post.getErrors(title, slug, body, postExist);
+			Map<String, ArrayList<String>> errors = Post.getErrors(title, newSlug, body, postExist);
 
 			List<Tag> allTags = SQLClass.getAllTags();
 			Map<String, String> mapAllTags = makeTagMap(allTags);
-			System.out.println(mapAllTags);
 			List<Tag> laterSelectTags = SQLClass.getTagsByPost(slug);
 			Map<String, String> mapLaterSelectTags = makeTagMap(laterSelectTags);
 

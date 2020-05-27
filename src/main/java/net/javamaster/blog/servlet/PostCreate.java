@@ -23,7 +23,7 @@ public class PostCreate extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Tag> tags = SQLClass.getAllTags();
 		request.setAttribute("tags", tags);
-		request.setAttribute("currentPage", "page/posts_create.jsp");
+		request.setAttribute("currentPage", "page/post_create.jsp");
 		request.getRequestDispatcher("/WEB-INF/JSP/template.jsp").forward(request, response);
 	}
 
@@ -68,7 +68,7 @@ public class PostCreate extends HttpServlet {
 				request.setAttribute("title", title);
 				request.setAttribute("slug", slug);
 				request.setAttribute("body", body);
-				request.setAttribute("currentPage", "page/posts_create.jsp");
+				request.setAttribute("currentPage", "page/post_create.jsp");
 				request.getRequestDispatcher("/WEB-INF/JSP/template.jsp").forward(request, response);
 			}
 	}

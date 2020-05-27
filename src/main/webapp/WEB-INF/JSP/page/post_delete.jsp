@@ -4,11 +4,11 @@
 
 <div class="container blog-post-delete">
 	<form action="#" method="POST">
-		<h3>Are you sure you wnt to delete Post - <b>${title}</b></h3>
+		<h3>Этот пост будет удален - <b>${title}</b></h3>
 		<div class="buttons-delete">
-			<a href="/post/detail?post=${slug}" class="btn btn-primary">Cancel</a>
+			<a href="/post/detail?post=${slug}" class="btn btn-primary">Вернуться назад</a>
 			<form action="post/delete" method="post">
-				<input type="submit" name='button' class="btn btn-danger" value="Delete">
+				<input type="submit" name='button' class="btn btn-danger" value="Удалить пост">
 			</form>
 		</div>
 	</form>

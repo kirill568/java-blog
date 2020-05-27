@@ -38,26 +38,26 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/blog">Posts</a>
+				<li class="nav-item active"><a class="nav-link" href="/posts">Посты</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/blog/tags">Tags</a>
+				<li class="nav-item"><a class="nav-link" href="/tags">Теги</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="/blog/post/create">create new post</a></li>
+					href="/post/create">создать новый пост</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="/blog/tag/create">create new tag</a></li>
+					href="/tag/create">создать новый тег</a></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0" action="#">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search" name="search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">поиск</button>
 			</form>
 		</div>
 	</nav>
-	<jsp:include page="page/posts_list.jsp" flush="true"/>
+	<jsp:include page="${currentPage}" flush="true"/>
 	<footer>
 		<div class="navbar navbar-light bg-light">
-			<a class="navbar-brand" href="https://github.com/kirill568">Developer</a>
+			<a class="navbar-brand" href="https://github.com/kirill568">Разработчик</a>
 		</div>
 	</footer>
 	<script type="text/javascript" src="static/js/hello.js"></script>
