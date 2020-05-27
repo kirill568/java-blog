@@ -60,6 +60,8 @@
 			<a class="navbar-brand" href="https://github.com/kirill568">Разработчик</a>
 		</div>
 	</footer>
-	<script type="text/javascript" src="static/js/hello.js"></script>
+	<script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="static/js/pagintaion.js"></script>
+	<script type="text/javascript" src="static/js/customPagination.js"></script>
 </body>
 </html>
