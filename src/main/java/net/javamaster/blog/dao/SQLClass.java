@@ -177,6 +177,32 @@ public class SQLClass {
 		close(con, stmt);
 		return tag;
 	}
+	
+	/**
+	 * Метод осуществлет поиск по заголовку, слагу, телу поста
+	 * @param searchString - строка поиска
+	 * @return - посты, которые были найдены
+	 */
+	public static List<Post> search(String searchString) {
+		Conn();
+		String queryString = "SELECT * FROM post WHERE slug LIKE ? OR body LIKE ? OR title LIKE ?";
+		ArrayList<String> queryParam = new ArrayList<>();
+		queryParam.add('%' + searchString + '%');
+		queryParam.add('%' + searchString + '%');
+		queryParam.add('%' + searchString + '%');
+		List<Post> list = new ArrayList<>();
+		ResultSet returnQuery = querySelect(queryParam, queryString);
+		try {
+			while (returnQuery.next()) {
+				Post tempPost = Post.convertRowToPost(returnQuery);
+				list.add(tempPost);
+			}
+		} catch (java.sql.SQLException e) {
+		  	e.printStackTrace();
+		}
+		close(con, stmt);
+		return list;
+	}
 
 	public static Integer queryChange(ArrayList<String> param, String query) {
 		Integer rows = null;
@@ -448,5 +474,4 @@ public class SQLClass {
 		close(con, stmt);
 		return boundExist;
 	}
-
 }

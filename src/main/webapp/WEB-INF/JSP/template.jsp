@@ -47,10 +47,10 @@
 				<li class="nav-item"><a class="nav-link"
 					href="/tag/create">создать новый тег</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0" action="#">
+			<form class="form-inline my-2 my-lg-0" action="" method="get">
 				<input class="form-control mr-sm-2" type="search"
-					placeholder="Search" aria-label="Search" name="search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">поиск</button>
+					placeholder="Поиск" aria-label="Search" name="search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">найти</button>
 			</form>
 		</div>
 	</nav>

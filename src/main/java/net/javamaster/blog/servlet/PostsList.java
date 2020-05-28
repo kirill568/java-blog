@@ -21,8 +21,13 @@ import net.javamaster.blog.model.Tag;
 @WebServlet({ "/posts" })
 public class PostsList extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<Post> allPosts = SQLClass.getAllPosts();
+		String searchString = request.getParameter("search");
+		List<Post> allPosts = null;
+		if (searchString == null) {
+			allPosts = SQLClass.getAllPosts();
+		} else {
+			allPosts = SQLClass.search(searchString);
+		}
 		List<List<Tag>> tags = new ArrayList<>();
 		for (int i = 0; i < allPosts.size(); i += 1) {
 			Post post = allPosts.get(i);
