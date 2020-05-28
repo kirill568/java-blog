@@ -11,5 +11,4 @@
         	<a href="/tag/update?tag=${tag.getSlug()}"><img src="../../../static/img/refresh-ccw.svg"></a>
         </h5>
     </c:forEach>
-    <jsp:include page="../pagination.jsp" flush="true"/>
 </div>

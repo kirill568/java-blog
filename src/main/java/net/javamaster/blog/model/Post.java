@@ -6,13 +6,41 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Kirill
+ * Класс представляет сущность пост
+ */
 public class Post {
+	/**
+	 * Поле id
+	 */
 	private int id;
+	
+	/**
+	 * Поле загловок
+	 */
 	private String title;
+	/**
+	 * Поле слаг
+	 */
 	private String slug;
+	/**
+	 * Поле тело поста
+	 */
 	private String body;
+	/**
+	 * поле дата публикации
+	 */
 	private String datePub;
 
+	/**
+	 * Конструктор - создание нового поста
+	 * @param id - id
+	 * @param title - загловок
+	 * @param slug - слаг
+	 * @param body - тело поста
+	 * @param datePub - дата публикации
+	 */
 	public Post(int id, String title, String slug, String body, String datePub) {
 		this.id = id;
 		this.title = title;
@@ -21,6 +49,13 @@ public class Post {
 		this.datePub = datePub;
 	}
 
+	/**
+	 * Конструктор - создание нового поста без id
+	 * @param title - загловок
+	 * @param slug - слаг
+	 * @param body - тело поста
+	 * @param datePub - дата публикации
+	 */
 	public Post(String title, String slug, String body, String datePub) {
 		this.title = title;
 		this.slug = slug;
@@ -28,46 +63,92 @@ public class Post {
 		this.datePub = datePub;
 	}
 
+	/**
+	 * Метод возвращает id
+	 * @return - id
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * Метод устанавливает id
+	 * @param id - id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Метод вовращает заголовок
+	 * @return - заголовок
+	 */
 	public String getTitle() {
 		return this.title;
 	}
 
+	/**
+	 * Метод устанавливает заголовок
+	 * @param title - заголовок
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * Метод возвращает слаг
+	 * @return - слаг
+	 */
 	public String getSlug() {
 		return this.slug;
 	}
 
+	/**
+	 * Метод устанавливает слаг
+	 * @param slug - слаг
+	 */
 	public void setSlug(String slug) {
 		this.slug = slug;
 	}
 
+	/**
+	 * Метод возвращает тело поста
+	 * @return - тело поста
+	 */
 	public String getBody() {
 		return this.body;
 	}
 
+	/**
+	 * Метод устанавливает тело поста
+	 * @param body - тело поста
+	 */
 	public void setBody(String body) {
 		this.body = body;
 	}
 
+	/**
+	 * Метод возвращает дату публикации
+	 * @return - дата публикации
+	 */
 	public String getDatePub() {
 		return this.datePub;
 	}
 
+	/**
+	 * Метод устанавливает дату публикации
+	 * @param datePub - дата публикации
+	 */
 	public void setDatePub(String datePub) {
 		this.datePub = datePub;
 	}
 
+	/**
+	 * Метод создает объект поста, из запроса
+	 * @param myRs - переменная типа ResultQuery
+	 * @return - пост
+	 * @throws SQLException
+	 */
 	public static Post convertRowToPost(ResultSet myRs) throws SQLException {
 		int id = myRs.getInt("id");
 		String title = myRs.getString("title");
@@ -78,6 +159,14 @@ public class Post {
 		return tempPost;
 	}
 
+	/**
+	 * Метод проводит проверку поста
+	 * @param title - заголовок
+	 * @param slug - слаг
+	 * @param body - тело поста
+	 * @param postExists - наличие поста в базе данных
+	 * @return - правду, если проверка прошла успешно, ложь если проверка не прошла
+	 */
 	public static Boolean validate(String title, String slug, String body, Boolean postExists) {
 		Boolean validate = true;
 
@@ -96,6 +185,14 @@ public class Post {
 		return validate;
 	}
 
+	/**
+	 * Метод возращает ошибки, которые возникли во время проверки
+	 * @param title - заголовок
+	 * @param slug - слаг
+	 * @param body - тело поста
+	 * @param postExists - наличие поста в базе данных
+	 * @return - ассоциативный массив, ключ - название поля, значение - список ошибок
+	 */
 	public static Map<String, ArrayList<String>> getErrors(String title, String slug, String body, Boolean postExists) {
 		String errorNull = "Поле не должно быть null";
 		String errorEmpty = "Поле не должно быть пустым";
@@ -146,15 +243,4 @@ public class Post {
 		return hashMap;
 	}
 	
-	public static void main(String[] args) {
-		String title = "1";
-		String slug = "kirill";
-		String body = null;
-		Boolean postExists = true;
-		Boolean validate = validate(title, slug, body, postExists);
-		System.out.println(validate);
-		Map<String, ArrayList<String>> errors = getErrors(title, slug, body, postExists);
-		System.out.println(errors.get("slug"));
-	}
-
 }

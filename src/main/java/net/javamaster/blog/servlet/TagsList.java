@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за вывод всех тегов по пути /tags
+ */
 @WebServlet({ "/tags" })
 public class TagsList extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

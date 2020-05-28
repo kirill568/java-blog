@@ -15,6 +15,10 @@ import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за изменение тега по пути /tag/update
+ */
 @WebServlet({ "/tag/update" })
 public class TagUpdate extends HttpServlet {
 

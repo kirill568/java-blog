@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за удаление тега по пути /tag/delete
+ */
 @WebServlet({ "/tag/delete" })
 public class TagDelete extends HttpServlet {
 

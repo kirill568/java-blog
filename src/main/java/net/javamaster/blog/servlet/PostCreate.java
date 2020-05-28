@@ -17,6 +17,10 @@ import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за создание поста по пути /post/create
+ */
 @WebServlet({ "/post/create" })
 public class PostCreate extends HttpServlet {
 

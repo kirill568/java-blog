@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 
+
+/**
+ * @author Kirill
+ * Класс отвечает за удаление поста по пути /post/delete
+ */
 @WebServlet({ "/post/delete" })
 public class PostDelete extends HttpServlet {
 

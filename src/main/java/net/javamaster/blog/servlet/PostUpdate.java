@@ -16,6 +16,10 @@ import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за изменение поста по пути /post/update
+ */
 @WebServlet({ "/post/update" })
 public class PostUpdate extends HttpServlet {
 

@@ -11,16 +11,37 @@ import java.util.List;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+
+/**
+ * @author Kirill
+ * Класс для работы с базой данных
+ */
+
 public class SQLClass {
+	
+	/**
+	 * Поле для url базы данных
+	 */
 	private static final String url = "jdbc:mysql://localhost:3306/blog?useSSL=false";
+    /**
+     * Поле имя пользователя базы данных
+     */
     private static final String user = "root";
+    
+    /**
+     * Поле пароль для пользователя
+     */
     private static final String password = "";
 
     static Connection con = null;
     static ResultSet rs = null;
     static PreparedStatement prepStmt = null;
     static Statement stmt = null;
-
+    
+    
+	/**
+	 * Метод, который устанавливает соединение с базой данных
+	 */
 	public static void Conn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,7 +53,13 @@ public class SQLClass {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	/**
+	 * Метод, который закрывает соединение с базой данных
+	 * @param con - переменная типа Connection
+	 * @param stmt переменная типа Statement
+	 */
 	public static void close(Connection con, Statement stmt) {
 		try {
 			con.close();
@@ -61,6 +88,10 @@ public class SQLClass {
 		return rs;
 	}
 
+	/**
+	 * Метод получения всех постов
+	 * @return - список постов
+	 */
 	public static List<Post> getAllPosts() {
 		Conn();
 		List<Post> list = new ArrayList<>();
@@ -79,6 +110,10 @@ public class SQLClass {
 		return list;
 	}
 
+	/**
+	 * Метод получения всех тегов
+	 * @return - список тегов
+	 */
 	public static List<Tag> getAllTags() {
 		Conn();
 		List<Tag> list = new ArrayList<>();
@@ -97,6 +132,11 @@ public class SQLClass {
 		return list;
 	}
 
+	/**
+	 * Метод возврашает один пост, у которого слаг соответсвует переданному
+	 * @param slug - слаг, по которому будет осуществляться поиск
+	 * @return - пост
+	 */
 	public static Post getPost(String slug) {
 		Conn();
 		Post post = null;
@@ -115,6 +155,11 @@ public class SQLClass {
 		return post;
 	}
 
+	/**
+	 * Метод возврашает один тег, у которого слаг соответсвует переданному
+	 * @param slug - слаг, по которому будет осуществляться поиск
+	 * @return - тег
+	 */
 	public static Tag getTag(String slug) {
 		Conn();
 		Tag tag = null;
@@ -149,6 +194,11 @@ public class SQLClass {
 		return rows;
 	}
 
+	/**
+	 * Метод осуществляет добавление нового поста в базу данных
+	 * @param obj - пост
+	 * @return - количество измененных строк
+	 */
 	public static Integer insertPost(Post obj) {
 		Conn();
 		String title = obj.getTitle();
@@ -168,6 +218,11 @@ public class SQLClass {
 		return rows;
 	}
 
+	/**
+	 * Метод осуществляе добавление нового тега в базу данных
+	 * @param obj - тег
+	 * @return - количество измененных строк
+	 */
 	public static Integer insertTag(Tag obj) {
 		Conn();
 		String title = obj.getTitle();
@@ -199,6 +254,13 @@ public class SQLClass {
 		return row;
 	}
 
+	/**
+	 * Метод изменяет ранее созданный пост
+	 * @param columns - название столбцов, значения в которых необходимо изменить
+	 * @param newValues - новые значения
+	 * @param slug - слаг поста
+	 * @return - количество измененных строк
+	 */
 	public static Integer updatePost(ArrayList<String> columns, ArrayList<String> newValues, String slug) {
 		Integer rowsUpdate = 0;
 		String table = "post";
@@ -208,7 +270,14 @@ public class SQLClass {
 		}
 		return rowsUpdate;
 	}
-
+	
+	/**
+	 * Метод изменяет ранее созданный тег
+	 * @param columns - название столбцов, значения в которых необходимо изменить
+	 * @param newValues - новые значения
+	 * @param slug - слаг тега
+	 * @return - количество измененных строк
+	 */
 	public static Integer updateTag(ArrayList<String> columns, ArrayList<String> newValues, String slug) {
 		Integer rowsUpdate = 0;
 		String table = "tag";
@@ -219,6 +288,11 @@ public class SQLClass {
 		return rowsUpdate;
 	}
 
+	/**
+	 * Метод удаляет пост из базы данных
+	 * @param slug - слаг поста
+	 * @return - количество измененных строк
+	 */
 	public static Integer deletePost(String slug) {
 		Conn();
 		ArrayList<String> list = new ArrayList<>();
@@ -229,7 +303,12 @@ public class SQLClass {
 		close(con, stmt);
 		return rows;
 	}
-
+	
+	/**
+	 * Метод удаляет тег из базы данных
+	 * @param slug - слаг тега
+	 * @return - количество измененных строк
+	 */
 	public static Integer deleteTag(String slug) {
 		Conn();
 		ArrayList<String> list = new ArrayList<>();
@@ -241,6 +320,13 @@ public class SQLClass {
 		return rows;
 	}
 
+	
+	/**
+	 * Метод создает связь между посто и тегом
+	 * @param slugPost - слаг поста
+	 * @param slugTag - слаг тега
+	 * @return  - количество измененных строк
+	 */
 	public static Integer makeBoundPostTag(String slugPost, String slugTag) {
 		Conn();
 
@@ -254,7 +340,13 @@ public class SQLClass {
 		close(con, stmt);
 		return row;
 	}
-
+	
+	
+	/**
+	 * Метод возвращает посты, которые связаны с определенным тегом
+	 * @param slugTag - слаг тега
+	 * @return - список постов
+	 */
 	public static List<Post> getPostsByTag(String slugTag) {
 		Conn();
 		List<Post> list = new ArrayList<>();
@@ -274,6 +366,11 @@ public class SQLClass {
 		return list;
 	}
 
+	/**
+	 * Метод возвращает теги, которые связаны с определенным постом
+	 * @param slugPost - слаг поста
+	 * @return - список тегов
+	 */
 	public static List<Tag> getTagsByPost(String slugPost) {
 		Conn();
 		List<Tag> list = new ArrayList<>();
@@ -293,6 +390,11 @@ public class SQLClass {
 		return list;
 	}
 
+	/**
+	 * Метод удаляет связи между постом и тегами
+	 * @param slugPost - слаг поста
+	 * @return - количество измененных строк
+	 */
 	public static Integer deleteBoundsPostWithTags(String slugPost) {
 		Conn();
 		String queryString = "DELETE FROM posttag WHERE slugPost=?";
@@ -304,6 +406,11 @@ public class SQLClass {
 		return rows;
 	}
 
+	/**
+	 * Метод удаляет связь между тегом и постами
+	 * @param slugTag - слаг тега
+	 * @return - количество измененных строк
+	 */
 	public static Integer deleteBoundsTagsWithPosts(String slugTag) {
 		Conn();
 		String queryString = "DELETE FROM posttag WHERE slugTag=?";
@@ -315,6 +422,12 @@ public class SQLClass {
 		return rows;
 	}
 
+	/**
+	 * Метод проверяет наличие связи между постом и тегом
+	 * @param slugPost - слаг поста
+	 * @param slugTag - слаг тега
+	 * @return - правда, если связь существует, ложь, если нет
+	 */
 	public static Boolean boundExist(String slugPost, String slugTag) {
 		Conn();
 		Boolean boundExist = false;

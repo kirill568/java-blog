@@ -13,6 +13,10 @@ import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за вывод связанных постов с тегом по пути /tag/detail
+ */
 @WebServlet({ "/tag/detail" })
 public class TagDetail extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

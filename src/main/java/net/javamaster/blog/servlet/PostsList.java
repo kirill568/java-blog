@@ -14,6 +14,10 @@ import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за вывод всех постов по пути /posts
+ */
 @WebServlet({ "/posts" })
 public class PostsList extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

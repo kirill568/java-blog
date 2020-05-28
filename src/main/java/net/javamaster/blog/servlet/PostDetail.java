@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Post;
 
+/**
+ * @author Kirill
+ * Класс отвечает за отображение содержимого поста по пути /post/detail
+ */
 @WebServlet({ "/post/detail" })
 public class PostDetail extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

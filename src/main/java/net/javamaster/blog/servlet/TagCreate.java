@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.javamaster.blog.dao.SQLClass;
 import net.javamaster.blog.model.Tag;
 
+/**
+ * @author Kirill
+ * Класс отвечает за создание тега по пути /tag/create
+ */
 @WebServlet({ "/tag/create" })
 public class TagCreate extends HttpServlet {
 
